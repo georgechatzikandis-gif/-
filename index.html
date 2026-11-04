@@ -444,14 +444,30 @@
   .hours-list li.today .htime{color:var(--bone);}
 
   /* ============ FOOTER ============ */
-  footer{background:var(--ink);color:var(--bone);border-top:1px solid var(--line);padding:clamp(3rem,6vw,4.5rem) var(--gutter) 2rem;}
-  .footer-top{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);}
-  .footer-brand{display:flex;align-items:center;}
-  .footer-logo-img{height:44px;width:auto;}
-  .footer-links{list-style:none;display:flex;gap:1.8rem;flex-wrap:wrap;}
-  .footer-links a{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);transition:color .3s;}
+  footer{background:var(--ink);color:var(--bone);border-top:1px solid var(--line);}
+  .footer-inner{max-width:1240px;margin:0 auto;padding:clamp(3.5rem,8vw,5rem) var(--gutter) clamp(2.5rem,5vw,3.5rem);display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:3rem 4rem;}
+  .footer-logo-img{height:48px;width:auto;display:block;margin-bottom:1.2rem;}
+  .footer-tagline{font-size:.82rem;color:var(--steel);line-height:1.6;margin-bottom:1.6rem;}
+  .footer-heading{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-dim);margin-bottom:1.2rem;}
+  .footer-links{list-style:none;}
+  .footer-links li+li{margin-top:.8rem;}
+  .footer-links a{color:var(--steel);font-size:.88rem;transition:color .25s;text-decoration:none;}
   .footer-links a:hover{color:var(--bone);}
-  .footer-bottom{max-width:1240px;margin:1.8rem auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--steel-dim);}
+  .footer-contact{list-style:none;}
+  .footer-contact li{display:flex;gap:.7rem;align-items:flex-start;color:var(--steel);font-size:.84rem;margin-bottom:.9rem;}
+  .footer-contact svg{flex-shrink:0;width:15px;height:15px;stroke:var(--steel-dim);stroke-width:1.5;fill:none;margin-top:.2em;}
+  .footer-contact a{color:var(--steel);text-decoration:none;transition:color .25s;}
+  .footer-contact a:hover{color:var(--bone);}
+  .footer-hours{list-style:none;}
+  .footer-hours li{display:flex;justify-content:space-between;gap:1rem;font-size:.78rem;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.07);}
+  .footer-hours li:last-child{border-bottom:none;}
+  .footer-hours li span:first-child{color:var(--bone-dim);}
+  .footer-hours li span:last-child{color:var(--steel);white-space:nowrap;}
+  .footer-social{display:flex;gap:.8rem;margin-top:.2rem;}
+  .footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;color:var(--steel);transition:border-color .25s,color .25s;text-decoration:none;}
+  .footer-social a:hover{border-color:rgba(255,255,255,.5);color:var(--bone);}
+  .footer-social svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .footer-bottom{border-top:1px solid var(--line);padding:1.4rem var(--gutter);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--steel-dim);text-transform:uppercase;}
 
   /* ============ REVEAL ============ */
   .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
@@ -474,7 +490,8 @@
     .cuts .section-head{align-items:flex-start;}
   }
   @media (max-width:540px){
-    .footer-top{flex-direction:column;align-items:flex-start;}
+    .footer-inner{grid-template-columns:1fr 1fr;gap:2.5rem;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;}
     .hero-cta .btn{flex:1 1 100%;justify-content:center;}
   }
   /* ---- large screens (PC / iPad landscape / wide monitors) ---- */
@@ -896,19 +913,56 @@
 </button>
 
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
+  <div class="footer-inner">
+    <div class="footer-col">
       <img class="footer-logo-img" src="media/logo.png" alt="Kaloudis Meats">
+      <p class="footer-tagline">Φρέσκα Ελληνικά κρέατα<br>στην Καναδά της Ρόδου.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
     </div>
-    <ul class="footer-links">
-      <li><a href="#about">Ιστορία</a></li>
-      <li><a href="#cuts">Επιλεγμένα Κρέατα</a></li>
-      <li><a href="#visit">Επισκεφθείτε μας</a></li>
-    </ul>
+    <div class="footer-col">
+      <h5 class="footer-heading">Πλοήγηση</h5>
+      <ul class="footer-links">
+        <li><a href="#about">Ιστορία</a></li>
+        <li><a href="#cuts">Επιλεγμένα Κρέατα</a></li>
+        <li><a href="#visit">Επισκεφθείτε μας</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 class="footer-heading">Επικοινωνία</h5>
+      <ul class="footer-contact">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11.5A7 7 0 0 1 19 9.5C19 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+          <span>Καναδά, Ρόδος</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M4 5h3l2 5-2 1a11 11 0 005 5l1-2 5 2v3a2 2 0 01-2 2c-9 0-16-7-16-16a2 2 0 012-2z"/></svg>
+          <a href="tel:+302241020963">22410-20963</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 class="footer-heading">Ωράριο</h5>
+      <ul class="footer-hours">
+        <li><span>Δευτέρα</span><span>7:00 – 20:30</span></li>
+        <li><span>Τρίτη</span><span>7:00 – 20:30</span></li>
+        <li><span>Τετάρτη</span><span>7:00 – 17:00</span></li>
+        <li><span>Πέμπτη</span><span>7:00 – 20:30</span></li>
+        <li><span>Παρασκευή</span><span>7:00 – 20:30</span></li>
+        <li><span>Σάββατο</span><span>7:00 – 18:00</span></li>
+        <li><span>Κυριακή</span><span>Κλειστά</span></li>
+      </ul>
+    </div>
   </div>
   <div class="footer-bottom">
-    <span>KANADA, RHODES</span>
-    <span>&copy; <span id="year"></span> KALOUDIS MEATS</span>
+    <span>&copy; <span id="year"></span> Kaloudis Meats</span>
+    <span>Κρεοπωλείο Καλούδης Βασίλης-Νίκος — Καναδά, Ρόδος</span>
   </div>
 </footer>
 
