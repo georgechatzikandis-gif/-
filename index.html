@@ -1025,8 +1025,10 @@
         gate.addEventListener(ev, function(){ playGateVideo(); }, {passive:true});
       });
     }
-    // initial reveal; scroll stays locked until a choice is made
-    requestAnimationFrame(function(){ gate.classList.add('show'); playGateVideo(); });
+    // initial reveal; double-rAF ensures CSS transitions fire on iOS/iPad
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ gate.classList.add('show'); playGateVideo(); });
+    });
   }
 
   function runPreloader(){
@@ -1047,9 +1049,11 @@
 
     var done = false;
     function safeFinish(){ if(!done){ done=true; finish(); } }
-    setTimeout(safeFinish, 5000);
+    setTimeout(safeFinish, 2500);
     vid.addEventListener('ended', safeFinish, {once:true});
-    vid.play().catch(safeFinish);
+    vid.addEventListener('error', safeFinish, {once:true});
+    var p = vid.play();
+    if(p && p.catch){ p.catch(safeFinish); } else { safeFinish(); }
   }
 
   // safety: never leave the page locked
@@ -1057,7 +1061,7 @@
     var pre = document.getElementById('preloader');
     if(pre){ pre.classList.add('done'); }
     startSite();
-  }, 15000);
+  }, 4000);
 
   if(document.readyState === 'complete'){ clearTimeout(safety); runPreloader(); }
   else window.addEventListener('load', function(){ clearTimeout(safety); runPreloader(); });
