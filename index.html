@@ -387,9 +387,9 @@
   .cut-card.hide{display:none;}
   .cut-card.pop{animation:cutPop .5s var(--ease) both;}
   @keyframes cutPop{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
-  .cut-photo{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink-soft);}
-  .cut-photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
-  .cut-card:hover .cut-photo img{transform:scale(1.07);}
+  .cut-photo{position:relative;aspect-ratio:4/5;overflow:hidden;background:#ededd1;}
+  .cut-photo img{width:100%;height:100%;object-fit:contain;transition:transform .8s var(--ease);}
+  .cut-card:hover .cut-photo img{transform:scale(1.04);}
   .cut-card h3{font-size:1.12rem;color:var(--bone);padding:1rem 1.1rem 1.2rem;letter-spacing:.02em;}
 
   /* ============ REVIEW CTA ============ */
@@ -737,7 +737,7 @@
         <h3>Λαιμός Χοιρινός Χωρίς Οστά</h3>
       </article>
       <article class="cut-card" data-cat="arni">
-        <div class="cut-photo" style="background:#ededd1;"><img src="menu/product_4424.png" alt="Αρνί γάλακτος" loading="lazy" style="object-fit:contain;"></div>
+        <div class="cut-photo"><img src="menu/product_4424.png" alt="Αρνί γάλακτος" loading="lazy"></div>
         <h3>Αρνί Γάλακτος</h3>
       </article>
       <article class="cut-card" data-cat="xoirino">
